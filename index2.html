@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>KSP Tools</title>
+        <script type="text/javascript" src="script.js"></script>
+    </head>
+    <body>
+        <select name="body" id="body">
+            <option value="earth">Select a parent body</option>
+            <option value="earth">Earth</option>
+        </select>
+        
+        <select name="preset" id="preset">
+            <option value="none">Select a target orbit</option>
+            <option value="stationary">Stationary orbit</option>
+        </select>
+        
+        <input id="peri1" type="number" placeholder="Starting Periapsis">
+        <input id="apo1" type="number" placeholder="Starting Apoapsis">
+        <input id="apo2" type="number" placeholder="Transfer Apoapsis">
+        <input id="peri2" type="number" placeholder="Target Periapsis">
+        <input id="apo3" type="number" placeholder="Target Apoapsis">
+        
+        <h1>Burn 1: <span id="b1"></span> m/s</h1>
+        <h1>Burn 2: <span id="b2"></span> m/s</h1>
+        <h1>Burn 3: <span id="b3"></span> m/s</h1>
+            
+    </body>
+</html>

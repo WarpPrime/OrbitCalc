@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <title>ksp tools</title>
+        <script>
+            var fuels = {
+                solid: 7.5 // 7.5 kg per unit
+            }
+            function calc() {
+                var Sconsump = (1000*document.getElementById("Sthrust").value / (document.getElementById("Simpulse").value * 9.80665))/fuels.solid;
+                document.getElementById("Sburn").innerHTML = String(document.getElementById("Sfuel").value/Sconsump)+" secs";
+                document.getElementById("solid").innerHTML = String(Sconsump) + " units/sec";
+
+
+                var sma = (Number(document.getElementById("perigee").value) + Number(document.getElementById("apogee").value))/2 + 6371000;
+                document.getElementById("sma").innerHTML = "Semimajor Axis:" + String(sma) + " m";
+
+                var pvel = Math.sqrt(3.9860044188e14 * (2/(Number(document.getElementById("perigee").value)+6371000) - 1/sma));
+                var avel = Math.sqrt(3.9860044188e14 * (2/(Number(document.getElementById("apogee").value)+6371000) - 1/sma));
+
+                document.getElementById("peri").innerHTML = "Perigee vel: " + String(pvel) + " m/s";
+                document.getElementById("apo").innerHTML = "Apogee vel: " + String(avel) + " m/s";
+
+
+                var sma2 = (Number(document.getElementById("perigee2").value) + Number(document.getElementById("apogee2").value))/2 + 6371000;
+                document.getElementById("sma2").innerHTML = "Semimajor Axis:" + String(sma2) + " m";
+
+                var pvel2 = Math.sqrt(3.9860044188e14 * (2/(Number(document.getElementById("perigee2").value)+6371000) - 1/sma2));
+                var avel2 = Math.sqrt(3.9860044188e14 * (2/(Number(document.getElementById("apogee2").value)+6371000) - 1/sma2));
+
+                document.getElementById("peri2").innerHTML = "Perigee vel: " + String(pvel2) + " m/s";
+                document.getElementById("apo2").innerHTML = "Apogee vel: " + String(avel2) + " m/s";
+
+                var prograde = pvel2-pvel;
+                document.getElementById("prograde").innerHTML = prograde;
+
+                var prograde2 = avel2-avel;
+                document.getElementById("prograde2").innerHTML = prograde2;
+            }
+        </script>
+    </head>
+    <body onload="setInterval(calc,100)">
+        <h1>Solid fuel</h1>
+        <input id="Sthrust" type="number" placeholder="Thrust">
+        <input id="Simpulse" type="number" placeholder="Specific Impulse">
+        <input id="Sfuel" type="number" placeholder="Fuel">
+        <h1 id="solid">0</h1>
+        <h1 id="Sburn">0</h1>
+        
+        <h1><br><br><br><br></h1>
+        <!-- 6371 km for ksp -->
+        <input id="perigee" type="number" placeholder="Perigee (m)">
+        <input id="apogee" type="number" placeholder="Apogee (m)">
+        
+        <h1 id="sma">Semimajor Axis: </h1>
+        <h1 id="peri">Perigee vel: </h1>
+        <h1 id="apo">Apogee vel: </h1>
+
+        <input id="perigee2" type="number" placeholder="Perigee (m)">
+        <input id="apogee2" type="number" placeholder="Apogee (m)">
+        
+        <h1 id="sma2">Semimajor Axis: </h1>
+        <h1 id="peri2">Perigee vel: </h1>
+        <h1 id="apo2">Apogee vel: </h1>
+
+        <h1 id="prograde">Prograde dV:</h1>
+        <h1 id="prograde2">Prograde dV:</h1>
+
+    </body>
+</html>
